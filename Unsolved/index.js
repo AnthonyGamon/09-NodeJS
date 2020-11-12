@@ -23,16 +23,6 @@ const promptUser = () =>
     },
     {
       type: 'input',
-      name: 'email',
-      message: 'What is your email address?',
-    },
-    {
-      type: 'input',
-      name: 'projectName',
-      message: 'What is your projects name?',
-    },
-    {
-      type: 'input',
       name: 'description',
       message: 'Please write a small description of your project',
     },
@@ -43,19 +33,9 @@ const promptUser = () =>
       choices: ['MIT', 'Apache 2.0', 'GLP 3.0', 'BDS 3.0', 'None'  ],
     },
     {
-      type: 'input',
-      name: 'dependencies',
-      message: 'What command should be run to install dependencies?',
-    },
-    {
         type: 'input',
         name: 'runTests',
         message: 'What command should be run to run tests?',
-      },
-      {
-        type: 'input',
-        name: 'repo',
-        message: 'What does the user need to know about using the repo?',
       },
       {
         type: 'input',
@@ -69,35 +49,39 @@ const generateREADME = (answers) =>
 # ${answers.title}
 
 ## Table of Contents
-##### * [username](#username)
-##### * [link](#link)
-##### * [email](#email)
-##### * [license](#license)
-##### * [dependencies](#dependencies)
-##### * [tests](#tests)
-##### * [repo](#repo)
-##### * [contributing](#contributing)
+##### * [Username](#username)
+##### * [Link](#link)
+##### * [Description](#description)
+##### * [License](#license)
+##### * [RunTests](#tests)
+##### * [Contributing](#contributing)
+##### * [Questions](#questions)
 
-
-## username
+## Username
 Please check out my github ${answers.username}.
-## link
-Here is the live link to this repository ${answers.link}.
-## email
-Email me! ${answers.email}.
-## license
-https://img.shields.io/badge/license-${answers.license}-lightgrey
-## dependencies
 
-## tests
+## Link
+Here is the live link to this repository ${answers.liveLink}.
 
-## repo
+## Description
+${answers.description}
 
-## contributing
+## License
+The project is licensed under the ${answers.license} license. 
 
+## Tests
+${answers.runTests}
+
+## Contributing
+${answers.contributing}
+
+## Questions
+If you have any questions about this repo, open an issue or contact me directly at anthonygamon@icloud.com. 
 `;
 
 promptUser()
   .then((answers) => writeFileAsync('README.md', generateREADME(answers)))
   .then(() => console.log('Successfully wrote to README.md'))
   .catch((err) => console.error(err));
+
+ 
