@@ -8,8 +8,18 @@ const promptUser = () =>
   inquirer.prompt([
     {
       type: 'input',
+      name: 'title',
+      message: 'What is the title of your project?',
+    },
+    {
+      type: 'input',
       name: 'username',
       message: 'What is your Github username?',
+    },
+    {
+      type: 'input',
+      name: 'liveLink',
+      message: 'Please provide the live link to your repo',
     },
     {
       type: 'input',
@@ -56,7 +66,35 @@ const promptUser = () =>
 
 const generateREADME = (answers) =>
 `
-XXXXXXXXXXXX Put readme here XXXXXXXXXXXX
+# ${answers.title}
+
+## Table of Contents
+##### * [username](#username)
+##### * [link](#link)
+##### * [email](#email)
+##### * [license](#license)
+##### * [dependencies](#dependencies)
+##### * [tests](#tests)
+##### * [repo](#repo)
+##### * [contributing](#contributing)
+
+
+## username
+Please check out my github ${answers.username}.
+## link
+Here is the live link to this repository ${answers.link}.
+## email
+Email me! ${answers.email}.
+## license
+https://img.shields.io/badge/license-${answers.license}-lightgrey
+## dependencies
+
+## tests
+
+## repo
+
+## contributing
+
 `;
 
 promptUser()
